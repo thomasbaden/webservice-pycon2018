@@ -28,7 +28,7 @@ async def pull_request_closed_event(event, gh, *args, **kwargs):
     message = f"Hey ${author}, thanks for the updates!"
     await gh.post(url, data={'body': message})
 
-@router.register("issue_comment", "created")
+@router.register("issue_comment", action="created")
 async def issue_comment_created_event(event, gh, *args, **kwargs):
     """ Whenever somebody comments, give it a thumbs-up """
     data = event.data["comment"]
