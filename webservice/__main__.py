@@ -65,10 +65,10 @@ async def main(request):
     return web.Response(status=200)
 
 if __name__ == "__main__":
-    app = web.Application()
-    app.router.add_post("/", main)
-    port = os.environ.get("PORT")
-    if port is not None:
-        port = int(port)
+    APP = web.Application()
+    APP.router.add_post("/", main)
+    PORT = os.environ.get("PORT")
+    if PORT is not None:
+        PORT = int(PORT)
 
-    web.run_app(app, port=port)
+    web.run_app(APP, port=PORT)
