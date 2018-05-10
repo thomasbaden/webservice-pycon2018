@@ -33,10 +33,11 @@ async def issue_comment_created_event(event, gh, *args, **kwargs):
     """ Whenever somebody comments, give it a thumbs-up """
     data = event.data["comment"]
     url = data["url"] + "/reactions"
+    reaction = '+1' if data["user"]["login"] == "thomasbaden" else 'heart'
 
     await gh.post(
         url,
-        data={'content': 'heart'},
+        data={'content': reaction},
         accept='application/vnd.github.squirrel-girl-preview+json',
     )
 
